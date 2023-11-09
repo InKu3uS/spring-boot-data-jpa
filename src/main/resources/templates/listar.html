@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{layout/layout :: head}"></head>
+
+  <body>
+    <header th:replace="~{layout/layout :: header}"></header>
+    <h1
+      class="text-center text-secondary border border-success border-top-0 border-left-0 border-right-0"
+      th:text="${titulo}"
+    ></h1>
+    <div class="d-grid justify-content-center mt-3">
+      <!--Mensajes Flash-->
+      <div
+        class="alert alert-success text-center"
+        th:if="${success != null}"
+        th:text="${success}"
+      ></div>
+      <div
+        class="alert alert-warning text-center"
+        th:if="${warning != null}"
+        th:text="${warning}"
+      ></div>
+      <div
+        class="alert alert-danger text-center"
+        th:if="${error != null}"
+        th:text="${error}"
+      ></div>
+      <div
+        class="alert alert-info text-center"
+        th:if="${info != null}"
+        th:text="${info}"
+      >
+        <!---->
+      </div>
+      <table class="table table-stripped table-hover shadow shadow-lg">
+        <caption
+          class="text-center fw-bold"
+          th:text="'Hay '+${cuenta} + ' clientes registrados'"
+        ></caption>
+        <thead class="text-center">
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Fecha Registro</th>
+            <th>Crear Factura</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="cliente: ${clientes}">
+            <td><a th:href="@{/ver/} + ${cliente.id}" th:text="${cliente.id}" class="btn btn-secondary btn-sm"></a></td>
+            <td th:text="${cliente.nombre}"></td>
+            <td th:text="${cliente.apellido}"></td>
+            <td th:text="${cliente.email}"></td>
+            <td th:text="${cliente.createAt}"></td>
+            <td> <a class="btn btn-success btn-xs" th:href="@{/factura/form/} + ${cliente.id}" th:text="'Nueva Factura'"></a></td>
+            <td>
+              <a
+                class="btn btn-primary btn-xs"
+                th:href="@{/form/} + ${cliente.id}"
+                >Editar</a
+              >
+              <a
+                class="btn btn-danger btn-xs"
+                th:href="@{/eliminar/} + ${cliente.id}"
+                onclick="return confirm('¿Esta seguro?');"
+                >Eliminar</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <nav th:replace="~{layout/paginator-nav :: paginator}"></nav>
+    </div>
+    <footer th:replace="~{layout/layout :: footer}"></footer>
+  </body>
+</html>
