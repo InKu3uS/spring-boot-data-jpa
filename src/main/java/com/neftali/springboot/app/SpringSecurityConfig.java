@@ -34,19 +34,16 @@ public class SpringSecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests((authz) -> {
 			try {
-				authz.requestMatchers("/", "/css/**", "/js/**", "/images/**", "/listar").permitAll()
+				authz.requestMatchers("/", "/css/**", "/js/**", "/images/**", "/listar", "/logout").permitAll()
 						.requestMatchers("/ver/**").hasRole("USER").requestMatchers("/uploads/**").hasRole("USER")
 						.requestMatchers("/form/**").hasAnyRole("ADMIN").requestMatchers("/eliminar/**")
 						.hasAnyRole("ADMIN").requestMatchers("/factura/**").hasAnyRole("ADMIN").anyRequest()
-						.authenticated().and().formLogin(login -> {
-							try {
-								login.loginPage("/login").permitAll().and().logout(logout -> logout.permitAll());
-							} catch (Exception e) {
-
-								e.getMessage();
-							}
-						}
-
+						.authenticated()
+						.and()
+						.formLogin(formlogin ->
+						formlogin.loginPage("/login").permitAll())
+						.logout((logout)->
+						logout.logoutSuccessUrl("/logout").permitAll()
 						);
 			} catch (Exception e) {
 				e.getMessage();

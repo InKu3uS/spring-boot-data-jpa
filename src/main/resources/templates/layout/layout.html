@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
   <head th:fragment="head">
     <title th:text="${titulo}"></title>
     <meta charset="utf-8" />
@@ -44,6 +44,21 @@
               </li>
             </ul>
           </div>
+          <ul class="navbar-nav navbar-right">
+            <li sec:authorize="!isAuthenticated()"><a class="btn btn-outline btn-secondary" th:href="@{/login}">Iniciar Sesión</a></li>
+            <li class="dropdown" sec:authorize="isAuthenticated()">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="fw-bold" sec:authentication="name"></span>
+              </a>
+              <ul class="dropdown-menu bg-secondary" aria-labelledby="dropdownMenuLink">
+                <li>
+                  <form th:action="@{/logout}" method="post">
+                    <input class="btn btn-secondary" type="submit" value="Cerrar Sesión">
+                  </form>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </nav>
     </header>
@@ -51,11 +66,15 @@
     <footer th:fragment="footer" class="container">
       <hr />
       <div class="text-center">
+        <p sec:authorize="isAuthenticated()">
+          Ha iniciado sesión como <span class="fw-bold" sec:authentication="name"></span> con el rol <span class="fw-bold" sec:authentication="principal.authorities"></span>
+        </p>
         <img
           th:src="@{/images/spring.png}"
           alt="Spring Logo"
           style="width: 90px"
         />
+        
         <p>
           Powered by
           <a href="https://projects.spring.io/spring-boot">Spring Boot</a> and
