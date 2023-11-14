@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
   <head th:replace="~{layout/layout :: head}"></head>
 
   <body>
@@ -11,22 +11,22 @@
     <div class="d-grid justify-content-center mt-3">
       <!--Mensajes Flash-->
       <div
-        class="alert alert-success text-center"
+        class="alert alert-success text-center col-sm-8 mx-auto"
         th:if="${success != null}"
         th:text="${success}"
       ></div>
       <div
-        class="alert alert-warning text-center"
+        class="alert alert-warning text-center col-sm-8 mx-auto"
         th:if="${warning != null}"
         th:text="${warning}"
       ></div>
       <div
-        class="alert alert-danger text-center"
+        class="alert alert-danger text-center col-sm-8 mx-auto"
         th:if="${error != null}"
         th:text="${error}"
       ></div>
       <div
-        class="alert alert-info text-center"
+        class="alert alert-info text-center col-sm-8 mx-auto"
         th:if="${info != null}"
         th:text="${info}"
       >
@@ -39,24 +39,24 @@
         ></caption>
         <thead class="text-center">
           <tr>
-            <th>ID</th>
+            <th sec:authorize="hasRole('ROLE_USER')">ID</th>
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Email</th>
             <th>Fecha Registro</th>
-            <th>Crear Factura</th>
-            <th>Acciones</th>
+            <th sec:authorize="hasRole('ROLE_ADMIN')">Crear Factura</th>
+            <th sec:authorize="hasRole('ROLE_ADMIN')">Acciones</th>
           </tr>
         </thead>
         <tbody>
           <tr th:each="cliente: ${clientes}">
-            <td><a th:href="@{/ver/} + ${cliente.id}" th:text="${cliente.id}" class="btn btn-secondary btn-sm"></a></td>
+            <td sec:authorize="hasRole('ROLE_USER')"><a th:href="@{/ver/} + ${cliente.id}" th:text="${cliente.id}" class="btn btn-secondary btn-sm"></a></td>
             <td th:text="${cliente.nombre}"></td>
             <td th:text="${cliente.apellido}"></td>
             <td th:text="${cliente.email}"></td>
             <td th:text="${cliente.createAt}"></td>
-            <td> <a class="btn btn-success btn-xs" th:href="@{/factura/form/} + ${cliente.id}" th:text="'Nueva Factura'"></a></td>
-            <td>
+            <td sec:authorize="hasRole('ROLE_ADMIN')"> <a class="btn btn-success btn-xs" th:href="@{/factura/form/} + ${cliente.id}" th:text="'Nueva Factura'"></a></td>
+            <td sec:authorize="hasRole('ROLE_ADMIN')">
               <a
                 class="btn btn-primary btn-xs"
                 th:href="@{/form/} + ${cliente.id}"

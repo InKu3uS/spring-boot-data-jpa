@@ -13,10 +13,15 @@ public class LoginController {
 	
 	@GetMapping("/login")
 	public String login(@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "logout", required = false) String logout,
 			Model model, Principal principal, RedirectAttributes flash) {
 		if(principal != null) {
-			flash.addFlashAttribute("info", "Ya has iniciado sesión anteriormente");
-			return "redirect:/";
+			flash.addFlashAttribute("info", "El usuario "+principal.getName()+" ya tiene una sesión iniciada");
+			return "redirect:/listar";
+		}
+		
+		if(logout != null) {
+			model.addAttribute("logout", "Se ha cerrado la sesión con éxito");
 		}
 		
 		if(error != null) {

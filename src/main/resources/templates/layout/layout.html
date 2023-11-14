@@ -50,7 +50,7 @@
               <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="fw-bold" sec:authentication="name"></span>
               </a>
-              <ul class="dropdown-menu bg-secondary" aria-labelledby="dropdownMenuLink">
+              <ul class="dropdown-menu dropdown-menu-end bg-secondary" aria-labelledby="dropdownMenuLink">
                 <li>
                   <form th:action="@{/logout}" method="post">
                     <input class="btn btn-secondary" type="submit" value="Cerrar Sesión">
@@ -90,8 +90,8 @@
       <!-- Import JQuery, JQuery UI, Popper y  Bootstrap-->
       <script th:src="@{/js/jquery.min.js}"></script>
       <script th:src="@{/js/popper.min.js}"></script>
-      <script th:src="@{/js/jquery-ui.min.js}"></script>
       <script th:src="@{/js/bootstrap.min.js}"></script>
+      <script th:src="@{/js/jquery-ui.min.js}"></script>
     </footer>
   </body>
 </html>
