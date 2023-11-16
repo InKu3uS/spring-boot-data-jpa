@@ -52,14 +52,24 @@
                 <span class="fw-bold" th:text="#{text.layout.language}"></span>
               </a>
               <ul class="dropdown-menu dropdown-menu-end bg-secondary text-center" aria-labelledby="dropdownMenuLink">
-                <li>
-                  <a th:href="@{/locale(lang=es_ES)}" class="btn btn-secondary" th:text="#{text.layout.spanish}"></a>
+                <li class="d-flex justify-content-center">
+                  <a th:href="@{/locale(lang=es_ES)}" class="btn btn-secondary d-flex">
+                    <img th:src="@{/images/ES.svg}" th:alt="#{text.layout.spanish}" class="mt-1 me-3" height="20" width="auto">
+                    <p th:text="#{text.layout.spanish}"></p>
+                  </a>
+
                 </li>
-                <li>
-                  <a th:href="@{/locale(lang=en_EN)}" class="btn btn-secondary" th:text="#{text.layout.english}"></a>
+                <li class="d-flex justify-content-center">
+                  <a th:href="@{/locale(lang=en_EN)}" class="btn btn-secondary d-flex">
+                    <img th:src="@{/images/UK.svg}" th:alt="#{text.layout.english}" class="mt-1 me-3" height="20" width="auto">
+                    <p th:text="#{text.layout.english}"></p>
+                  </a>
                 </li>
-                <li>
-                  <a th:href="@{/locale(lang=de_DE)}" class="btn btn-secondary" th:text="#{text.layout.german}"></a>
+                <li class="d-flex justify-content-center">
+                  <a th:href="@{/locale(lang=de_DE)}" class="btn btn-secondary d-flex">
+                    <img th:src="@{/images/DE.svg}" th:alt="#{text.layout.german}" class="mt-1 me-3" height="20" width="auto">
+                    <p th:text="#{text.layout.german}"></p>
+                  </a>
                 </li>
               </ul>
             </li>
