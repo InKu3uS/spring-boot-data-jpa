@@ -8,7 +8,7 @@
     <div class="container d-grid justify-content-center py-4">
       <h1
         th:text="${titulo}"
-        class="text-secondary"></h1>
+        class="text-secondary text-center"></h1>
 
       <div th:object="${cliente}" th:remove="tag">
         <h5
@@ -19,7 +19,7 @@
       </div>
       <form th:action="@{/form}" th:object="${cliente}" method="post" enctype="multipart/form-data" class="shadow shadow-lg">
         <div class="form-group row justify-content-center">
-          <label class="col-sm-2 col-form-label">Nombre</label>
+          <label class="col-sm-4 col-form-label text-center" th:text="#{text.cliente.nombre}"></label>
           <div class="col-sm-6 mb-2">
             <input
               type="text"
@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="form-group row justify-content-center">
-          <label class="col-sm-2 col-form-label">Apellido</label>
+          <label class="col-sm-4 col-form-label text-center" th:text="#{text.cliente.apellido}"></label>
           <div class="col-sm-6 mb-2">
             <input
               type="text"
@@ -51,7 +51,7 @@
           </div>
         </div>
         <div class="form-group row justify-content-center">
-          <label class="col-sm-2 col-form-label">Email</label>
+          <label class="col-sm-4 col-form-label text-center" th:text="#{text.cliente.email}"></label>
           <div class="col-sm-6 mb-2">
             <input
               type="text"
@@ -67,7 +67,7 @@
           </div>
         </div>
         <div class="form-group row justify-content-center">
-          <label class="col-sm-2 col-form-label">Fecha</label>
+          <label class="col-sm-4 col-form-label text-center" th:text="#{text.cliente.createAt}"></label>
           <div class="col-sm-6 mb-2">
             <input
               type="date"
@@ -83,7 +83,7 @@
           </div>
         </div>
         <div class="form-group row justify-content-center">
-          <label class="col-sm-2 col-form-label">Foto</label>
+          <label class="col-sm-4 col-form-label text-center" th:text="#{form.foto}"></label>
           <div class="col-sm-6 mb-2">
             <input
               type="file"
@@ -94,10 +94,10 @@
         </div>
         <div class="form-group row text-center">
           <div class="col-sm-6 py-4">
-            <input type="submit" value="Crear Cliente" class="btn btn-primary"/>
+            <input type="submit" th:value="#{boton.crearCliente}" class="btn btn-primary"/>
           </div>
           <div class="col-sm-6 py-4">
-            <a class="btn btn-success" th:href="@{/listar}">Volver</a>
+            <a class="btn btn-success" th:href="@{/listar}" th:text="#{boton.volver}"></a>
           </div>
         </div>
       </form>

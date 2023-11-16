@@ -4,8 +4,8 @@
     <nav th:fragment="paginator">
         <ul class="pagination justify-content-center">
             <li class="page-item" th:class="${page.first? 'page-item disabled' : 'page-item'}">
-                <span class="page-link" th:if="${page.first}">Inicio</span>
-                <a class="page-link" th:if="${not page.first}" th:href="@{${page.url}(page=0)}">Inicio</a>
+                <span class="page-link" th:if="${page.first}" th:text="#{text.paginator.first}"></span>
+                <a class="page-link" th:if="${not page.first}" th:href="@{${page.url}(page=0)}" th:text="#{text.paginator.first}"></a>
             </li>
 
             <li class="page-item" th:class="${not page.hasPrevious? 'page-item disabled' : 'page-item'}">
@@ -21,8 +21,8 @@
                 <a class="page-link" th:if="${page.hasNext}" th:href="@{${page.url}(page=${page.paginaActual})}"><span aria-hidden="true">&raquo;</span></a>
             </li>
             <li class="page-item" th:class="${page.last? 'page-item disabled' : 'page-item'}">
-                <span class="page-link" th:if="${page.last}">Fin</span>
-                <a class="page-link" th:if="${not page.last}" th:href="@{${page.url}(page=${page.totalPaginas-1})}">Fin</a>
+                <span class="page-link" th:if="${page.last}" th:text="#{text.paginator.last}"></span>
+                <a class="page-link" th:if="${not page.last}" th:href="@{${page.url}(page=${page.totalPaginas-1})}" th:text="#{text.paginator.last}"></a>
             </li>
         </ul>
     </nav>

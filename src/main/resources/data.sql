@@ -68,19 +68,26 @@ INSERT INTO clientes (id, nombre, apellido, email, create_at, foto)
 VALUES (23, 'Eva', 'Fernández Sánchez', 'evafdez@gmail.com', '2021-07-12', '');
 
 
-INSERT INTO productos(nombre, precio, create_at) VALUES ('Steam Deck 512 GB', 599, NOW());
-INSERT INTO productos(nombre, precio, create_at) VALUES ('PlayStation 5 1 TB', 599, NOW());
-INSERT INTO productos(nombre, precio, create_at) VALUES ('Xbox Series X 1 TB', 599, NOW());
-INSERT INTO productos(nombre, precio, create_at) VALUES ('Xbox Series S 1 TB', 399, NOW());
-INSERT INTO productos(nombre, precio, create_at) VALUES ('Starfield Collectors Edition', 110, NOW());
-INSERT INTO productos(nombre, precio, create_at) VALUES ('Baldurs Gate 3', 69, NOW());
-INSERT INTO productos(nombre, precio, create_at) VALUES ('Diablo 4 Ultimate Edition', 99, NOW());
-INSERT INTO productos(nombre, precio, create_at) VALUES ('Xbox Elite Series 2 Controller', 150, NOW());
-INSERT INTO productos(nombre, precio, create_at) VALUES ('Xbox Series X Controller', 150, NOW());
-INSERT INTO productos(nombre, precio, create_at) VALUES ('PlayStation 5 Controller', 80, NOW());
-INSERT INTO productos(nombre, precio, create_at) VALUES ('Nintendo Switch', 225, NOW());
-INSERT INTO productos(nombre, precio, create_at) VALUES ('Nintendo Switch Oled', 299, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Steam Deck 512 GB', 599, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('PlayStation 5 1 TB', 599, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Xbox Series X 1 TB', 599, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Xbox Series S 1 TB', 399, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Starfield Collectors Edition', 110, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Baldurs Gate 3', 69, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Diablo 4 Ultimate Edition', 99, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Xbox Elite Series 2 Controller', 150, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Xbox Series X Controller', 150, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('PlayStation 5 Controller', 80, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Nintendo Switch', 225, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ('Nintendo Switch Oled', 299, NOW());
 
-INSERT INTO facturas(descripcion, observacion, cliente_id, create_at) VALUES ('Material para vicios', null, 1, NOW());
-INSERT INTO facturas_items(cantidad, factura_id, producto_id) VALUES (1,1,1)
+INSERT INTO facturas (descripcion, observacion, cliente_id, create_at) VALUES ('Material para vicios', null, 1, NOW());
+INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (1,1,1);
+
+INSERT INTO users (username, password, enabled) VALUES ('Nefta', '$2a$12$kifxMvB9LJffyVX6YVVUoOzaN2Yodfh52i.JyX/g6sEAXJmlpR4sy', 1);
+INSERT INTO users (username, password, enabled) VALUES ('Nuria', '$2y$12$fZtY/Lfh3Gn7gWLep1KfkOvs0h/6kK2n7AWMHG8Y5C8JCKDbJAkGK', 1);
+
+INSERT INTO authorities (user_id, authority) VALUES (1, 'ROLE_USER');
+INSERT INTO authorities (user_id, authority) VALUES (1, 'ROLE_ADMIN');
+INSERT INTO authorities (user_id, authority) VALUES (2, 'ROLE_USER');
 

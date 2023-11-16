@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
   <head th:fragment="head">
     <title th:text="${titulo}"></title>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -36,29 +36,51 @@
                   class="nav-link active"
                   aria-current="page"
                   th:href="@{/listar}"
-                  >Clientes</a
+                  th:text="#{text.layout.customers}"></a
                 >
               </li>
-              <li class="nav-item">
-                <a class="nav-link" th:href="@{/form}">Insertar Cliente</a>
+              <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                <a class="nav-link" th:href="@{/form}" th:text="#{text.layout.inserCust}"></a>
               </li>
             </ul>
           </div>
+          
+          <ul class="navbar-nav navbar-right mx-4">
+            
+            <li class="dropdown">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="fw-bold" th:text="#{text.layout.language}"></span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end bg-secondary text-center" aria-labelledby="dropdownMenuLink">
+                <li>
+                  <a th:href="@{/locale(lang=es_ES)}" class="btn btn-secondary" th:text="#{text.layout.spanish}"></a>
+                </li>
+                <li>
+                  <a th:href="@{/locale(lang=en_EN)}" class="btn btn-secondary" th:text="#{text.layout.english}"></a>
+                </li>
+                <li>
+                  <a th:href="@{/locale(lang=de_DE)}" class="btn btn-secondary" th:text="#{text.layout.german}"></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+            
           <ul class="navbar-nav navbar-right">
-            <li sec:authorize="!isAuthenticated()"><a class="btn btn-outline btn-secondary" th:href="@{/login}">Iniciar Sesión</a></li>
+            <li sec:authorize="!isAuthenticated()"><a class="btn btn-outline btn-secondary" th:href="@{/login}" th:text="#{text.layout.login}"></a></li>
             <li class="dropdown" sec:authorize="isAuthenticated()">
               <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="fw-bold" sec:authentication="name"></span>
               </a>
-              <ul class="dropdown-menu dropdown-menu-end bg-secondary" aria-labelledby="dropdownMenuLink">
+              <ul class="dropdown-menu dropdown-menu-end bg-secondary text-center" aria-labelledby="dropdownMenuLink">
                 <li>
                   <form th:action="@{/logout}" method="post">
-                    <input class="btn btn-secondary" type="submit" value="Cerrar Sesión">
+                    <input class="btn btn-secondary" type="submit" th:value="#{text.layout.logout}">
                   </form>
                 </li>
               </ul>
             </li>
           </ul>
+          
         </div>
       </nav>
     </header>
@@ -66,26 +88,29 @@
     <footer th:fragment="footer" class="container">
       <hr />
       <div class="text-center">
-        <p sec:authorize="isAuthenticated()">
-          Ha iniciado sesión como <span class="fw-bold" sec:authentication="name"></span> con el rol <span class="fw-bold" sec:authentication="principal.authorities"></span>
-        </p>
+        <div sec:authorize="isAuthenticated()" class="d-flex text-center justify-content-center">
+          <p th:text="#{text.footer.login}"></p> <span class="fw-bold ms-1 me-1" sec:authentication="name"></span> <p th:text="#{text.footer.roles}"></p> <span class="fw-bold ms-1 me-1" sec:authentication="principal.authorities"></span>
+          </p>
+        </div>
+        
         <img
           th:src="@{/images/spring.png}"
           alt="Spring Logo"
           style="width: 90px"
         />
         
-        <p>
-          Powered by
-          <a href="https://projects.spring.io/spring-boot">Spring Boot</a> and
-          <a href="http://www.thymeleaf.org">Thymeleaf</a>
-        </p>
+        <div class="d-flex text-center justify-content-center">
+          <p th:text="#{text.footer.desarrollado}" ></p>
+          <a href="https://projects.spring.io/spring-boot" class="me-1 ms-1">Spring Boot</a> 
+          <p th:text="#{text.footer.y}"></p>
+          <a href="http://www.thymeleaf.org" class="ms-1">Thymeleaf</a>
+        </di>
       </div>
       <div class="text-center">
-        <p>
-          Este proyecto fué desarrollado por <b>Davy Crockett</b>. Todos los derechos
-          reservados &copy;.
-        </p>
+        <div class="d-flex text-center justify-content-center">
+          <p th:text="#{text.footer.hechoPor}"></p> <p class="fw-bold ms-1 me-1">Davy Crockett. </p>
+          <p th:text="#{text.footer.copyrigth}" class="ms-1 me-1"></p> &copy;.
+        </div>
       </div>
       <!-- Import JQuery, JQuery UI, Popper y  Bootstrap-->
       <script th:src="@{/js/jquery.min.js}"></script>

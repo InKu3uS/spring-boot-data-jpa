@@ -5,10 +5,15 @@
     <header th:replace="~{layout/layout :: header}"></header>
     <div class="container py-4 col-sm-6">
         <div class="bg-danger text-white rounded">
-            <h4 class="card-title text-center fw-bold m-5 p-3">Error: Acceso Denegado </h4>
-            <div class="card-body text-center p-3">
-                <h5>Lo sentimos <span sec:authentication="name" class="fw-bold"></span>, no tienes permisos para acceder a esta página </h5>
-                <a th:href="@{/listar}" class="btn btn-outline-light mt-4" role="button">Volver</a>
+            <h4 class="card-title text-center fw-bold m-5 p-3" th:text="#{text.403}"></h4>
+            <div class="card-body text-center p-3 d-grid justify-content-center">
+              <div class="d-flex justify-content-center text-center flex-wrap">
+                <h5 th:text="#{text.403.sorry}"></h5> <h5 sec:authentication="name" class="fw-bold ms-1 me-1"></h5><h5 th:text="#{text.403.sinPermiso}"></h5><br>
+              </div>
+                <div class="d-flex justify-content-center">
+                  <a th:href="@{/listar}" class="btn btn-outline-light mt-4" role="button" th:text="#{boton.volver}"></a>
+                </div>
+                
             </div>
         </div>
     </div>

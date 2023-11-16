@@ -20,19 +20,19 @@
               <ul class="list-group">
                 <li
                   class="list-group-item"
-                  th:text="'Nombre: '+${cliente.nombre}"
+                  th:text="#{text.cliente.nombre}+': '+${cliente.nombre}"
                 ></li>
                 <li
                   class="list-group-item"
-                  th:text="'Apellido: '+${cliente.apellido}"
+                  th:text="#{text.cliente.apellido}+': '+${cliente.apellido}"
                 ></li>
                 <li
                   class="list-group-item"
-                  th:text="'Email: '+${cliente.email}"
+                  th:text="#{text.cliente.email}+': '+${cliente.email}"
                 ></li>
                 <li
                   class="list-group-item"
-                  th:text="'Fecha de registro: '+${cliente.createAt}"
+                  th:text="#{text.cliente.createAt}+': '+${cliente.createAt}"
                 ></li>
               </ul>
             </div>
@@ -47,12 +47,12 @@
               >
                 <thead>
                   <tr>
-                    <th>Folio</th>
-                    <th>Descripción</th>
-                    <th>Fecha</th>
-                    <th>Total</th>
-                    <th sec:authorize="hasRole('ROLE_ADMIN')">Detalles</th>
-                    <th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar Factura</th>
+                    <th th:text="#{text.factura.hoja}"></th>
+                    <th th:text="#{text.factura.descripcion}"></th>
+                    <th th:text="#{text.factura.fecha}"></th>
+                    <th th:text="#{text.factura.total}"></th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{text.factura.detalles}"></th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{text.factura.eliminar}"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -61,15 +61,15 @@
                     <td th:text="${factura.descripcion}"></td>
                     <td th:text="${factura.createAt}"></td>
                     <td th:text="${factura.total} + ' €'"></td>
-                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-primary btn-xs" th:href="@{'/factura/ver/' + ${factura.id}}" th:text="'Ver'"></a></td>
-                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-danger btn-xs" th:href="@{'/factura/eliminar/' + ${factura.id}}" onclick="return confirm('¿Eliminar la factura?');" th:text="'Eliminar'"></a></td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-primary btn-xs" th:href="@{'/factura/ver/' + ${factura.id}}" th:text="#{boton.ver}"></a></td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-danger btn-xs" th:href="@{'/factura/eliminar/' + ${factura.id}}" onclick="return confirm('¿Eliminar la factura?');" th:text="#{boton.eliminar}"></a></td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
           <div class="col-sm-12 py-4 text-center">
-            <a class="btn btn-success" th:href="@{/listar}">Volver</a>
+            <a class="btn btn-success" th:href="@{/listar}" th:text="#{boton.volver}"></a>
           </div>
         </div>
       </div>
