@@ -14,12 +14,11 @@ import org.supercsv.io.ICsvBeanWriter;
 import org.supercsv.prefs.CsvPreference;
 
 import com.neftali.springboot.app.model.entity.Cliente;
-import com.neftali.springboot.app.utils.paginator.PageRender;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@Component("listar")
+@Component("listar.csv")
 public class ClienteCsvView extends AbstractView{
 	
 	@Autowired
