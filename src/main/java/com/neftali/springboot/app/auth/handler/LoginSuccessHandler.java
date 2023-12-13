@@ -1,10 +1,10 @@
 package com.neftali.springboot.app.auth.handler;
 
 import java.io.IOException;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -24,15 +24,15 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 	@Autowired
 	MessageSource message;
 
-	@Override
+	
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-			Authentication authentication) throws IOException, ServletException {
+			Authentication authentication, Locale locale) throws IOException, ServletException {
 		
 		SessionFlashMapManager flashMapManager = new SessionFlashMapManager();
-		
-		
+		System.out.println("LOCALE ---> "+locale);
 		FlashMap flashMap = new FlashMap();
-		flashMap.put("success", message.getMessage("login.bienvenido", null, LocaleContextHolder.getLocale())+" "+authentication.getName()+"! "+message.getMessage("login.exito", null, LocaleContextHolder.getLocale()));
+		flashMap.put("info", message.getMessage("login.bienvenido", null, locale)+
+				" "+authentication.getName()+"! "+message.getMessage("login.exito", null, locale));
 		
 		flashMapManager.saveOutputFlashMap(flashMap, request, response);
 		

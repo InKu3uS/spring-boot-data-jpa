@@ -81,8 +81,9 @@ INSERT INTO productos (nombre, precio, create_at) VALUES ('PlayStation 5 Control
 INSERT INTO productos (nombre, precio, create_at) VALUES ('Nintendo Switch', 225, NOW());
 INSERT INTO productos (nombre, precio, create_at) VALUES ('Nintendo Switch Oled', 299, NOW());
 
-INSERT INTO facturas (descripcion, observacion, cliente_id, create_at) VALUES ('Material para vicios', null, 1, NOW());
-INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (1,1,1);
+INSERT INTO facturas (descripcion, observacion, cliente_id, create_at) VALUES ('Consolas', null, 1, NOW());
+INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (2,1,1);
+INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (1,1,3);
 
 INSERT INTO users (username, password, enabled) VALUES ('Nefta', '$2a$12$kifxMvB9LJffyVX6YVVUoOzaN2Yodfh52i.JyX/g6sEAXJmlpR4sy', 1);
 INSERT INTO users (username, password, enabled) VALUES ('Nuria', '$2y$12$fZtY/Lfh3Gn7gWLep1KfkOvs0h/6kK2n7AWMHG8Y5C8JCKDbJAkGK', 1);

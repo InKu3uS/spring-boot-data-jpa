@@ -24,8 +24,10 @@ public class LoginController {
 			Principal principal,
 			RedirectAttributes flash,
 			Locale locale) {
+		
 		if(principal != null) {
-			flash.addFlashAttribute("info", message.getMessage("info.usuario", null, locale)+" "+principal.getName()+" "+ message.getMessage("info.usuario.sesion", null, locale));
+			flash.addFlashAttribute("info", message.getMessage("login.bienvenido", null, locale)+" "+
+					principal.getName()+"! "+message.getMessage("login.exito", null, locale));
 			return "redirect:/listar";
 		}
 		

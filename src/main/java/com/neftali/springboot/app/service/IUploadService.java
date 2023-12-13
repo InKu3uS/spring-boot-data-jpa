@@ -2,8 +2,9 @@ package com.neftali.springboot.app.service;
 
 import java.io.IOException;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
-
+@Component
 public interface IUploadService {
 	
 	

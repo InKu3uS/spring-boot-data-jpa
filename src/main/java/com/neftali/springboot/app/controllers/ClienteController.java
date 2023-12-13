@@ -61,6 +61,7 @@ public class ClienteController {
 		// Se crea un nuevo PageRequest que mostrará la pagina recibida con 5 resultados
 		// por pagina
 		Pageable pageRequest = PageRequest.of(page, 5);
+		System.out.println(locale);
 
 		// Comprobando la autenticacion y el rol del usuario
 		if (authentication != null) {
@@ -83,6 +84,7 @@ public class ClienteController {
 		model.addAttribute("titulo", message.getMessage("text.cliente.listar.titulo", null, locale));
 		model.addAttribute("clientes", clientes);
 		model.addAttribute("page", pageRender);
+		model.addAttribute("pageActual", pageRender.getPaginaActual());
 		return "listar";
 	}
 
