@@ -126,7 +126,7 @@ public class FacturaXlsxView extends AbstractXlsxView {
 
 		row = sheet.createRow(sheet.getLastRowNum() + 1);
 		row.createCell(0).setCellValue(message.getMessage("text.factura.fecha", null, locale) + ": ");
-		row.createCell(1).setCellValue(factura.getCreateAt());
+		row.createCell(1).setCellValue(factura.getCreateAt().toString());
 
 		row = sheet.createRow(sheet.getLastRowNum() + 1);
 		row.createCell(0).setCellValue(message.getMessage("text.factura.form.descripcion", null, locale) + ": ");

@@ -78,7 +78,7 @@ public class FacturaPdfView extends AbstractPdfView{
 		datosFactura.addCell(tituloFactura);
 		datosFactura.setSpacingAfter(30);
 		datosFactura.addCell(message.getMessage("text.factura.hoja",null, locale)+": "+factura.getId());
-		datosFactura.addCell(message.getMessage("text.factura.fecha",null, locale)+": "+factura.getCreateAt());
+		datosFactura.addCell(message.getMessage("text.factura.fecha",null, locale)+": "+factura.getCreateAt().toString());
 		datosFactura.addCell(message.getMessage("text.factura.descripcion",null, locale)+": "+factura.getDescripcion());
 		datosFactura.addCell(message.getMessage("text.factura.form.observaciones",null, locale)+": "+factura.getObservacion());
 		
